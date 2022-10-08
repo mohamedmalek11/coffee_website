@@ -2,11 +2,15 @@
   <div class="bG"></div>
   <nav class="nav_bar">
     <div class="inner_nav">
-      <img
-        style="height: 50px; padding: 5px"
-        src="./assets/logo.png"
-        alt="logo"
-      />
+      <router-link to="/" custom v-slot="{ navigate }">
+        <a @click="navigate" role="link" style="padding: 0px">
+          <img
+            style="height: 50px; padding: 5px"
+            src="./assets/logo.png"
+            alt="logo"
+          />
+        </a>
+      </router-link>
       <div>
         <router-link to="/">Home</router-link>
         <router-link to="/shop">Shop</router-link>
