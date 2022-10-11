@@ -1,42 +1,45 @@
 <template>
   <div class="about">
     <h1>Contact Us</h1>
-    <form ref="form" @submit.prevent="sendEmail">
-      <label>Name</label>
-      <input
-        type="text"
-        v-model="userName"
-        @change="valid"
-        name="user_name"
-        required
-      />
-      <label>Email</label>
-      <input
-        type="email"
-        v-model="userEmail"
-        @change="valid"
-        name="user_email"
-        required
-      />
-      <label>Message</label>
-      <textarea
-        name="message"
-        v-model="usermessage"
-        @change="valid"
-        required
-      ></textarea>
-      <input
-        type="submit"
-        @click="active = true"
-        value="Send"
-        :disabled="validated == false"
-      />
-    </form>
+    <div class="contact_form">
+      <form ref="form" @submit.prevent="sendEmail">
+        <label>Name</label>
+        <input
+          type="text"
+          v-model="userName"
+          @change="valid"
+          name="user_name"
+          required
+        />
+        <label>Email</label>
+        <input
+          type="email"
+          v-model="userEmail"
+          @change="valid"
+          name="user_email"
+          required
+        />
+        <label>Message</label>
+        <textarea
+          name="message"
+          v-model="usermessage"
+          @keypress="valid"
+          required
+        ></textarea>
+        <input
+          type="submit"
+          @click="active = true"
+          value="Send"
+          :disabled="validated == false"
+        />
+      </form>
+    </div>
+
     <div id="myModal" class="modal" v-show="active">
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close" @click="active = false">&times;</span>
-        <p>Thanks for contacting us</p>
+        <p>Thank you for contacting us, we will respond as soon as possible</p>
       </div>
     </div>
   </div>
@@ -64,8 +67,6 @@ export default {
       this.usermessage.length > 5
         ? (this.validated = true)
         : (this.validated = false);
-      console.log(this.userName.length);
-      console.log(this.validated);
     },
     sendEmail() {
       emailjs
@@ -88,25 +89,94 @@ export default {
 };
 </script>
 <style>
+@keyframes slideUp {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@media (max-width: 750px) {
+  .contact_form {
+    max-width: 260px;
+  }
+}
+input {
+  box-shadow: rgb(177 177 177 / 32%) -4px 6px 13px -5px;
+  border: 1px solid #ededed73;
+  height: 33px;
+  border-radius: 5px;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+input:focus {
+  border: 1px solid #adacac;
+  height: 33px;
+  border-radius: 5px;
+}
+input:focus-visible {
+  outline: none;
+}
+label {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
 .about {
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
+.contact_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  min-width: 200px;
+  padding: 40px 30px;
+  box-shadow: rgb(60 66 87 / 12%) 0px 7px 14px 0px,
+    rgb(0 0 0 / 12%) 0px 3px 6px 0px;
+  animation: slideUp 0.3s ease-in;
+}
+
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
-  width: 500px;
+  width: 100%;
   text-align: start;
-}
-input {
-  margin-bottom: 20px;
 }
 textarea {
   margin-bottom: 20px;
+  box-shadow: rgb(177 177 177 / 32%) -4px 6px 13px -5px;
+  border: 1px solid #ededed73;
+  height: 33px;
+  border-radius: 5px;
+  font-size: 15px;
+  resize: none;
+  height: 100px;
+  padding: 10px;
+  overflow: hidden;
+}
+textarea:focus {
+  outline: none;
+}
+input[type="submit"] {
+  background-color: var(--primary);
+  color: #fff;
+}
+input[type="submit"]:disabled {
+  background-color: var(--grey);
+  color: #fff;
+}
+input[type="submit"]:focus {
+  background-color: var(--primaryDarcker);
+  color: #fff;
 }
 .modal {
   position: fixed;
@@ -123,12 +193,17 @@ textarea {
 .modal-content {
   background-color: #fefefe;
   margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
+  padding: 40px 20px;
+  width: 70%;
+  border-radius: 5px;
+  box-shadow: 12px 12px 12px #86868621;
+  position: relative;
 }
 .close {
   color: #aaaaaa;
+  position: absolute;
+  right: 15px;
+  top: 9px;
   float: right;
   font-size: 28px;
   font-weight: bold;

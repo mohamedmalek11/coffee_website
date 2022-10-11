@@ -3,7 +3,8 @@
     --primary: #41b883;
     --primaryDarcker: #2b885e;
     --bkColor: #161616;
-    --mainTextColor: --#2c3e50;
+    --mainTextColor: #2c3e50;
+    --grey: rgb(163, 163, 163);
 }
 h1 {
     color: var(--mainTextColor);
