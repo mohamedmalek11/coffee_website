@@ -32,6 +32,16 @@ export default {
 </script>
 
 <style scoped>
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    left: 200px;
+  }
+  100% {
+    opacity: 1;
+    left: 0px;
+  }
+}
 video#myVideo {
   object-fit: cover;
   position: fixed;
@@ -62,6 +72,7 @@ video#myVideo {
   max-width: 999px;
   margin: auto;
   line-height: 1.5;
+  animation: slideIn 0.8s ease-in;
 }
 .content h1 {
   font-size: 50px;
@@ -75,7 +86,7 @@ video#myVideo {
   padding: 10px 40px;
   border: none;
   border-radius: 0%;
-  background-color: #41b883;
+  background-color: var(--primary);
   color: #fff;
   font-size: 14px;
   font-weight: bold;
@@ -83,6 +94,6 @@ video#myVideo {
   cursor: pointer;
 }
 .shop_button:hover {
-  background-color: #2b885e;
+  background-color: var(--primaryDarcker);
 }
 </style>

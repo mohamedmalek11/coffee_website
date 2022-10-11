@@ -31,13 +31,13 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: var(--mainTextColor);
   width: 100%;
   height: 100%;
 }
 .bG {
   z-index: 0;
-  background-color: #161616;
+  background-color: var(--bkColor);
   position: absolute;
   height: 60px;
   width: 100%;
@@ -67,7 +67,7 @@ nav a {
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: var(--primary);
   text-decoration: underline;
 }
 </style>
