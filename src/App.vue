@@ -11,7 +11,15 @@
           />
         </a>
       </router-link>
-      <div>
+      <div class="mobile_menu" @click="active = !active">...</div>
+      <div v-show="active" class="mobile_menu_el">
+        <span class="close" @click="active = false">&times;</span>
+        <router-link @click="active = false" to="/">Home</router-link>
+        <router-link @click="active = false" to="/shop">Shop</router-link>
+        <router-link @click="active = false" to="/about">About</router-link>
+        <router-link @click="active = false" to="/contact">Contact</router-link>
+      </div>
+      <div class="desktop_menu">
         <router-link to="/">Home</router-link>
         <router-link to="/shop">Shop</router-link>
         <router-link to="/about">About</router-link>
@@ -21,8 +29,75 @@
   </nav>
   <router-view />
 </template>
+<script>
+export default {
+  data() {
+    return {
+      active: false,
+    };
+  },
+};
+</script>
 
 <style>
+@keyframes slide {
+  0% {
+    transform: translateX(500px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@media (max-width: 750px) {
+  .desktop_menu {
+    display: none;
+  }
+  .mobile_menu {
+    display: block !important;
+    color: #fff;
+  }
+  .mobile_menu_el {
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 85%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    animation: slide 0.5s forwards;
+  }
+  nav a {
+    color: var(--mainTextColor) !important;
+  }
+  nav a.router-link-exact-active {
+    color: var(--primary) !important;
+    text-decoration: underline;
+  }
+  .close {
+    color: #aaaaaa;
+    position: absolute;
+    right: 15px;
+    top: 9px;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+.mobile_menu {
+  display: none;
+}
 html {
   height: 100%;
 }
