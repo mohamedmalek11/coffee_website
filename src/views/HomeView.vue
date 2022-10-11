@@ -32,14 +32,25 @@ export default {
 </script>
 
 <style scoped>
-@keyframes slideIn {
+@media (max-width: 750px) {
+  .content {
+    padding: 0px 20px !important;
+  }
+  .content h1 {
+    font-size: 40px !important;
+  }
+  .content p {
+    font-size: 16px !important;
+  }
+}
+@keyframes slide {
   0% {
+    transform: translateX(200px);
     opacity: 0;
-    left: 200px;
   }
   100% {
+    transform: translateX(0px);
     opacity: 1;
-    left: 0px;
   }
 }
 video#myVideo {
@@ -51,33 +62,38 @@ video#myVideo {
   min-height: 100%;
 }
 .content_wrapper {
-  position: absolute;
+  position: fixed;
   right: 0;
+  top: 0;
   bottom: 0;
+  left: 0;
   min-width: 100%;
   min-height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
 }
 .content {
   color: #fff;
-  position: relative;
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-align: start;
   padding: 0px 30px;
-  justify-content: end;
-  width: 100%;
-  height: 417px;
-  max-width: 999px;
+  justify-content: center;
+  max-width: 1000px;
   margin: auto;
   line-height: 1.5;
-  animation: slideIn 0.8s ease-in;
+  animation: slide 0.5s cubic-bezier(0.4, 0, 1, 1);
 }
 .content h1 {
   font-size: 50px;
   text-transform: uppercase;
   margin: 0px;
+  color: #fff;
 }
 .content p {
   font-size: 21px;
