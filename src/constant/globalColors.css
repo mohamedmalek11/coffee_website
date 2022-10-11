@@ -1,0 +1,10 @@
+
+:root {
+    --primary: #41b883;
+    --primaryDarcker: #2b885e;
+    --bkColor: #161616;
+    --mainTextColor: --#2c3e50;
+}
+h1 {
+    color: var(--mainTextColor);
+}
