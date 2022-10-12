@@ -10,9 +10,15 @@
   "dependencies": {
     "@emailjs/browser": "^3.7.0",
     "core-js": "^3.8.3",
+    "git-scripts": "^0.6.4",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
+  },
+  "git": {
+    "scripts": {
+      "pre-push": "surge --project ./ --domain coffee-website.surge.sh"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
