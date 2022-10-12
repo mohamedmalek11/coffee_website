@@ -16,8 +16,9 @@
     "vuex": "^4.0.0"
   },
   "git": {
+    
     "scripts": {
-      "pre-push": "surge --project ./ --domain sunday-coffee.surge.sh"
+      "pre-push": "surge --project ./dist --domain sunday-coffee.surge.sh"
     }
   },
   "devDependencies": {
