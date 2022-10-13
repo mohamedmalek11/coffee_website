@@ -14,7 +14,7 @@
       <font-awesome-icon
         @click="active = !active"
         class="mobile_menu"
-        icon="fa-solid fa-2xl fa-bars"
+        icon="fa-solid fa-bars"
       />
       <div v-show="active" class="mobile_menu_el">
         <span class="close" @click="active = false">&times;</span>
