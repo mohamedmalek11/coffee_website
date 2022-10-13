@@ -53,6 +53,9 @@ export default {
     opacity: 1;
   }
 }
+.home {
+  background-color: #000;
+}
 video#myVideo {
   object-fit: cover;
   position: fixed;
@@ -60,6 +63,7 @@ video#myVideo {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
+  background-color: #000;
 }
 .content_wrapper {
   position: fixed;
@@ -69,7 +73,7 @@ video#myVideo {
   left: 0;
   min-width: 100%;
   min-height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgb(0 0 0 / 30%);
 }
 .content {
   color: #fff;
