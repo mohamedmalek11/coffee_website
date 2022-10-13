@@ -11,7 +11,11 @@
           />
         </a>
       </router-link>
-      <div class="mobile_menu" @click="active = !active">...</div>
+      <font-awesome-icon
+        @click="active = !active"
+        class="mobile_menu"
+        icon="fa-solid fa-2xl fa-bars"
+      />
       <div v-show="active" class="mobile_menu_el">
         <span class="close" @click="active = false">&times;</span>
         <router-link @click="active = false" to="/">Home</router-link>
@@ -53,8 +57,10 @@ export default {
     display: none;
   }
   .mobile_menu {
+    width: 30px;
+    height: 30px;
+    color: var(--primary);
     display: block !important;
-    color: #fff;
   }
   .mobile_menu_el {
     position: fixed;
