@@ -33,6 +33,10 @@ export default {
 
 <style scoped>
 @media (max-width: 750px) {
+  video#myVideo {
+    right: 100%;
+    left: -100%;
+  }
   .content {
     padding: 0px 20px !important;
   }
