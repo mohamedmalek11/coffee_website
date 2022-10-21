@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="contact">
     <h2>Contact Us</h2>
     <div class="card_container">
       <div class="contact_form">
@@ -158,7 +158,7 @@ label {
   font-size: 14px;
   margin-bottom: 8px;
 }
-.about {
+.contact {
   align-items: center;
   display: flex;
   flex-direction: column;
