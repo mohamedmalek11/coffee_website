@@ -33,8 +33,11 @@
         type="text"
         v-model="searchVal"
         @change="filterData"
-        name="search"
+        @submit.prevent=""
       />
+      <button class="mobile_search_button" @click="filterData = false">
+        Search
+      </button>
       <span class="close" @click="opensearch = false">&times;</span>
     </form>
   </div>
@@ -153,6 +156,17 @@ export default {
   color: #fff;
   width: fit-content;
   border-radius: 50%;
+}
+button.mobile_search_button {
+  border: none;
+  width: fit-content;
+  padding: 5px 10px;
+  background-color: var(--primary);
+  color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  right: 57px;
+  top: 27px;
 }
 .search_modal {
   position: fixed;
