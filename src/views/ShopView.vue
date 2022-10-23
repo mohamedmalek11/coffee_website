@@ -28,15 +28,9 @@
   </div>
   <!-- search input -->
   <div class="search_modal" v-show="opensearch">
-    <form autocomplete="off">
-      <input
-        type="text"
-        v-model="searchVal"
-        @change="filterData"
-        @submit.prevent=""
-      />
+    <form autocomplete="off" @submit.prevent="event.preventDefault()">
+      <input type="text" v-model="searchVal" @change="filterData" />
       <button
-        @submit.prevent=""
         class="mobile_search_button"
         style="display: none"
         @click="filterData = false"
