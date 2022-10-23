@@ -114,7 +114,7 @@ html {
   text-align: center;
   color: var(--mainTextColor);
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 }
 .bG {
   z-index: 0;

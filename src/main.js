@@ -6,7 +6,7 @@ import store from "./store";
 import "./constant/globalColors.css";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookF,
   faInstagram,
@@ -21,7 +21,8 @@ library.add(
   faInstagram,
   faWhatsapp,
   faLinkedinIn,
-  faYoutube
+  faYoutube,
+  faMagnifyingGlass
 );
 
 createApp(App)
