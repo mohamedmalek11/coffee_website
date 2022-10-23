@@ -72,18 +72,17 @@ export default {
       .catch((error) => {
         console.error(error);
       });
-    let fiterdDD = () => {
-      return this.apiData.filter((item) => {
-        return item.title.toLowerCase().match("b".toLowerCase());
-      });
-    };
-    fiterdDD();
-    console.log(fiterdDD()[0].title);
   },
   computed: {
     filterData: function () {
       return this.apiData.filter((item) => {
-        return item.title.toLowerCase().match(this.searchVal.toLowerCase());
+        return (
+          item.title.toLowerCase().match(this.searchVal.toLowerCase()) ||
+          item.ingredients
+            .toString()
+            .toLowerCase()
+            .match(this.searchVal.toLowerCase())
+        );
       });
     },
   },
