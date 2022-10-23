@@ -35,7 +35,12 @@
         @change="filterData"
         @submit.prevent=""
       />
-      <button class="mobile_search_button" @click="filterData = false">
+      <button
+        @submit.prevent=""
+        class="mobile_search_button"
+        style="display: none"
+        @click="filterData = false"
+      >
         Search
       </button>
       <span class="close" @click="opensearch = false">&times;</span>
@@ -309,6 +314,10 @@ input:focus-visible {
     max-width: 1200px;
     margin: auto;
   }
+  .product_cart {
+    width: fit-content;
+    padding: 5px 10px;
+  }
   .product_cart img {
     width: 160px;
     height: 160px;
@@ -323,6 +332,9 @@ input:focus-visible {
   }
   .search {
     left: 100% !important;
+  }
+  .mobile_search_button {
+    display: block !important;
   }
 }
 </style>
