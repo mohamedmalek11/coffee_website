@@ -28,11 +28,11 @@
   </div>
   <!-- search input -->
   <div class="search_modal" v-show="opensearch">
-    <form>
+    <form autocomplete="off">
       <input
         type="text"
         v-model="searchVal"
-        @keypress="filterData"
+        @change="filterData"
         name="search"
       />
       <span class="close" @click="opensearch = false">&times;</span>
