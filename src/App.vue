@@ -2,6 +2,7 @@
   <div class="bG"></div>
   <nav class="nav_bar">
     <div class="inner_nav">
+      <!-- logo  -->
       <router-link to="/" custom v-slot="{ navigate }">
         <a @click="navigate" role="link" style="padding: 0px">
           <img
@@ -11,6 +12,7 @@
           />
         </a>
       </router-link>
+      <!-- mobile button menu -->
       <font-awesome-icon
         @click="active = !active"
         class="mobile_menu"

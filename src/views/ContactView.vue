@@ -46,7 +46,7 @@
     </div>
 
     <div id="myModal" class="modal" v-show="active">
-      <!-- Modal content -->
+      <!-- Modal popup content -->
       <div class="modal-content">
         <span class="close" @click="active = false">&times;</span>
         <p>Thank you for contacting us, we will respond as soon as possible</p>

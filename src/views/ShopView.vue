@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <!-- serach icon -->
+  <!-- search input -->
   <div class="search_modal" v-show="opensearch">
     <form>
       <input
@@ -38,6 +38,7 @@
       <span class="close" @click="opensearch = false">&times;</span>
     </form>
   </div>
+  <!-- serach icon -->
   <font-awesome-icon
     v-show="!loading && !opensearch"
     class="search"
@@ -62,7 +63,7 @@ export default {
   },
   async created() {
     const baseURL = "https://api.sampleapis.com/coffee/hot";
-
+    // fitching data
     await fetch(baseURL)
       .then((resp) => resp.json())
       .then((data) => {
@@ -75,6 +76,7 @@ export default {
   },
   computed: {
     filterData: function () {
+      // search data for name or ingredient and make new array
       return this.apiData.filter((item) => {
         return (
           item.title.toLowerCase().match(this.searchVal.toLowerCase()) ||
