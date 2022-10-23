@@ -16,8 +16,8 @@
     </div>
   </div>
   <div v-show="!loading" class="shop">
-    <div class="product_cart" v-for="(item, index) in apiData" :key="index">
-      <img :src="item.image" alt="" />
+    <div class="product_cart" v-for="(item, index) in filterData" :key="index">
+      <v-lazy-image :src="item.image" />
       <p class="title">{{ item.title }}</p>
       <div class="ingredients">
         <ul>
@@ -26,15 +26,39 @@
       </div>
     </div>
   </div>
+  <!-- serach icon -->
+  <div class="search_modal" v-show="opensearch">
+    <form>
+      <input
+        type="text"
+        v-model="searchVal"
+        @keypress="filterData"
+        name="search"
+      />
+      <span class="close" @click="opensearch = false">&times;</span>
+    </form>
+  </div>
+  <font-awesome-icon
+    v-show="!loading && !opensearch"
+    class="search"
+    icon="fa-solid fa-magnifying-glass"
+    @click="opensearch = !opensearch"
+  />
 </template>
 <script>
+import VLazyImage from "v-lazy-image";
 export default {
   name: "shopView",
   data() {
     return {
       apiData: [],
       loading: true,
+      opensearch: false,
+      searchVal: "",
     };
+  },
+  components: {
+    VLazyImage,
   },
   async created() {
     const baseURL = "https://api.sampleapis.com/coffee/hot";
@@ -44,11 +68,24 @@ export default {
       .then((data) => {
         this.apiData = data;
         this.loading = false;
-        console.log(this.apiData);
       })
       .catch((error) => {
         console.error(error);
       });
+    let fiterdDD = () => {
+      return this.apiData.filter((item) => {
+        return item.title.toLowerCase().match("b".toLowerCase());
+      });
+    };
+    fiterdDD();
+    console.log(fiterdDD()[0].title);
+  },
+  computed: {
+    filterData: function () {
+      return this.apiData.filter((item) => {
+        return item.title.toLowerCase().match(this.searchVal.toLowerCase());
+      });
+    },
   },
 };
 </script>
@@ -61,11 +98,13 @@ export default {
 }
 .shop {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
   grid-gap: 20px;
   max-width: 1200px;
   margin: auto;
   padding: 10px 10px;
+  justify-content: center;
+  height: 100%;
 }
 .product_cart {
   display: flex;
@@ -73,6 +112,9 @@ export default {
   justify-content: start;
   align-items: center;
   margin: 0px 0px 25px 0px;
+  background: #fff;
+  box-shadow: 3px 4px 12px 0px #e4e4e4;
+  height: fit-content;
 }
 .title {
   margin: 15px 0px 10px 0px;
@@ -97,8 +139,68 @@ export default {
   height: 220px;
   object-fit: cover;
   object-position: center;
+  padding-top: 10px;
 }
-
+.search {
+  position: sticky;
+  bottom: 20px;
+  left: 95vw;
+  margin: 20px;
+  background-color: var(--primary);
+  padding: 10px;
+  font-size: 25px;
+  color: #fff;
+  width: fit-content;
+  border-radius: 50%;
+}
+.search_modal {
+  position: fixed;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+  box-shadow: rgb(177 177 177 / 32%) 0px -7px 13px -5px;
+  padding: 20px 50px;
+  background-color: #fff;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  width: 100%;
+  text-align: start;
+}
+input {
+  border: 1px solid #d1d1d173;
+  height: 33px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+input:focus {
+  height: 33px;
+  border-radius: 5px;
+  box-shadow: rgb(163 163 163 / 12%) 13px 15px 14px 0px,
+    rgb(138 138 138 / 12%) 7px 15px 6px 0px;
+  animation: iconUp 0.2s ease-in;
+}
+input:focus-visible {
+  outline: none;
+}
+.close {
+  color: #aaaaaa;
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 .lds-default {
   display: inline-block;
   position: relative;
@@ -188,10 +290,9 @@ export default {
   .shop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    grid-gap: 0px;
+    grid-gap: 10px;
     max-width: 1200px;
     margin: auto;
-    padding: 10px 20px;
   }
   .product_cart img {
     width: 160px;
@@ -204,6 +305,9 @@ export default {
   }
   .ingredients ul li {
     flex: 0 0 auto;
+  }
+  .search {
+    left: 100% !important;
   }
 }
 </style>

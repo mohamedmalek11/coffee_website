@@ -267,7 +267,6 @@ svg:not(:host).svg-inline--fa:hover {
   font-size: 28px;
   font-weight: bold;
 }
-
 .close:hover,
 .close:focus {
   color: #000;
