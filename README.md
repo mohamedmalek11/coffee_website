@@ -1,8 +1,7 @@
 # coffee_website
 ![screencapture-sunday-coffee-surge-sh-2023-01-14-21_21_02](https://user-images.githubusercontent.com/66698329/212492576-98564626-42b6-401f-bed7-b71d469ae146.png)
 
-![Uploading screencapture-sunday-coffee-surge-sh-2023-01-14-21_22_11.png…]()
-
+![screencapture-sunday-coffee-surge-sh-2023-01-14-21_22_11](https://user-images.githubusercontent.com/66698329/212492708-b78adfcf-7e30-44a4-ab84-73d1e9b304cd.png)
 
 ![screencapture-sunday-coffee-surge-sh-2023-01-14-21_23_21](https://user-images.githubusercontent.com/66698329/212492590-a19b6f25-cf91-4c3f-a4bd-8198c8367712.png)
 
